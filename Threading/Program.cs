@@ -6,7 +6,9 @@ namespace Threading
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("How many darts will be thrown each thread?");
+            int throws = Convert.ToInt32(Console.ReadLine());
+
         }
     }
 }
