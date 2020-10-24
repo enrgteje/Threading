@@ -36,7 +36,10 @@ namespace Threading
                 dartsLanded += piList[i].dartsLandedAccessor;
             }
             totalDarts = dartsPerThread * threadCount;
-            Console.WriteLine();
+            double pi = 4.0 * ((double)dartsLanded / (double)totalDarts);
+            Console.WriteLine("The number of darts in the target are: " + dartsLanded);
+            Console.WriteLine("The total number of darts were: " + totalDarts);
+            Console.WriteLine("Pi is: " + pi);
         }
     }
 }

@@ -21,8 +21,8 @@ namespace Threading
         {
             for(int i = 0; i < darts; i++)
             {
-                double x = random.Next(0, 1);
-                double y = random.Next(0, 1);
+                double x = random.NextDouble();
+                double y = random.NextDouble();
                 x *= x;
                 y *= y;
                 double hypotenuse = Math.Sqrt(x + y);
