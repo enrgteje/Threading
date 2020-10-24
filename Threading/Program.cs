@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Linq;
 using System.Threading;
 
 namespace Threading
@@ -8,14 +10,33 @@ namespace Threading
     {
         static void Main(string[] args)
         {
+            int dartsLanded = 0;
+            int totalDarts = 0;
             Console.WriteLine("How many darts will be thrown each thread?");
+            int dartsPerThread = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("How many threads will you want?");
             int threadCount = Convert.ToInt32(Console.ReadLine());
-            List<Thread> b = new List<Thread>(threadCount);
-            List<FindPiThread> c = new List<FindPiThread>(threadCount);
+            List<Thread> threadList = new List<Thread>(threadCount);
+            List<FindPiThread> piList = new List<FindPiThread>(threadCount);
             for(int i = 0; i < threadCount; i++)
             {
-                FindPiThread a = new FindPiThread(threadCount);
+                FindPiThread piThread = new FindPiThread(dartsPerThread);
+                piList.Add(piThread);
+                Thread myThread = new Thread(new ThreadStart(piThread.throwDarts));
+                threadList.Add(myThread);
+                myThread.Start();
+                Thread.Sleep(16);
             }
+            for(int i = 0; i < threadList.Count; i++)
+            {
+                threadList[i].Join();
+            }
+            for(int i = 0; i < piList.Count; i++)
+            {
+                dartsLanded += piList[i].dartsLandedAccessor;
+            }
+            totalDarts = dartsPerThread * threadCount;
+            Console.WriteLine();
         }
     }
 }

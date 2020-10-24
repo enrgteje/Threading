@@ -9,7 +9,8 @@ namespace Threading
         Random random;
         int darts;
         int dartsLanded;
-        FindPiThread(int darts)
+        public int dartsLandedAccessor => dartsLanded;
+        public FindPiThread(int darts)
         {
             this.darts = darts;
             dartsLanded = 0;
@@ -27,7 +28,7 @@ namespace Threading
                 double hypotenuse = Math.Sqrt(x + y);
                 if (hypotenuse <= 1)
                 {
-                    dartsLanded++;
+                    dartsLanded += 1;
                 }
             }    
         }
