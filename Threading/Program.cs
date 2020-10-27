@@ -1,4 +1,11 @@
-﻿using System;
+﻿/* Name: Enrique Tejeda
+ * Date: 10/26/2020
+ * Filename: Program.cs
+ * Description: Program asks the user how many darts will be thrown along with how many threads they want to use for the program to find pi. Program calls FindPiThread's
+ *              throwDarts function to find how many darts landed in the target so that it can be used to calculate pi. Program also adds the threads depending on how many the user requests.
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
@@ -12,12 +19,16 @@ namespace Threading
         {
             int dartsLanded = 0;
             int totalDarts = 0;
+
             Console.WriteLine("How many darts will be thrown each thread?");
             int dartsPerThread = Convert.ToInt32(Console.ReadLine());
             Console.WriteLine("How many threads will you want?");
             int threadCount = Convert.ToInt32(Console.ReadLine());
+
+            //Creating the threads
             List<Thread> threadList = new List<Thread>(threadCount);
             List<FindPiThread> piList = new List<FindPiThread>(threadCount);
+
             for(int i = 0; i < threadCount; i++)
             {
                 FindPiThread piThread = new FindPiThread(dartsPerThread);

@@ -1,4 +1,10 @@
-﻿using System;
+﻿/* Name: Enrique Tejeda
+ * Date: 10/26/2020
+ * Filename: FindPiThread.cs
+ * Description: Class has a function that keeps a track of how many darts have landed in the target. Constructor sets everything to default when the object is created in Program.cs
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Text;
 
